@@ -31,10 +31,16 @@ const scrapeLogic = async (res) => {
   const browser = await puppeteer.launch({
     headless: false, // Enable headful mode for debugging
     args: [
-      "--disable-setuid-sandbox",
       "--no-sandbox",
-      "--single-process",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-features=AudioServiceOutOfProcess",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--disable-extensions",
       "--no-zygote",
+      "--single-process",
+      "--disable-features=MediaSessionService,Notifications",
     ],
     executablePath:
       process.env.NODE_ENV === "production"
